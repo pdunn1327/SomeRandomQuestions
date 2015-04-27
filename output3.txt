@@ -1,0 +1,4 @@
+string(156) "<html><head><title>Object moved</title></head><body>
+<h2>Object moved to <a href="%2fdbipts%2fdefault.aspx%3fpage%3derror">here</a>.</h2>
+</body></html>
+"
