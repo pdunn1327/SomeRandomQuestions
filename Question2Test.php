@@ -1,6 +1,7 @@
 <?php
 /* Unit Tests for Question 2
  * Tests the findConsecutiveRuns() function
+ * Utilizes the PHPUnit Framework
  *
  * @author Patrick Dunn <pdunn1327@gmail.com>
  * (c) 2015 Patrick Dunn

@@ -1,9 +1,9 @@
 <?php
 /* Question 1
- *
- *
- *
- *
+ * 
+ * 
+ * @author Patrick Dunn <pdunn1327@gmail.com>
+ * (C) 2015 Patrick Dunn
  */
 
 /*

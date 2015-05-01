@@ -1,6 +1,7 @@
 <?php
 /* Unit Tests for Question 1
  * Uses the findCodeDescriptions() function
+ * Utilizes the PHPUnit Framework
  *
  * @author Patrick Dunn <pdunn1327@gmail.com>
  * (c) 2015 Patrick Dunn
