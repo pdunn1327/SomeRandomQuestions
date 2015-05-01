@@ -50,7 +50,6 @@ class Question2Test extends \PHPUnit_Framework_TestCase {
     $input = [1,2,1,2,1,2,1,2];
     $this->assertEquals($expected_output, findConsecutiveRuns($input));
     
-    //TODO: if have enough time, create a random run generator
   }
   
   /*

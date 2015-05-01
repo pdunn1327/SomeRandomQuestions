@@ -1,6 +1,8 @@
 <?php
 /* Question 1
- * 
+ * Takes in an array as input of possible Zoning Codes for NYC.
+ * It will attempt to find matches and if so will display what the description for the code is.
+ * Otherwise, it will return "Not found"
  * 
  * @author Patrick Dunn <pdunn1327@gmail.com>
  * (C) 2015 Patrick Dunn
@@ -41,20 +43,22 @@ function findCodeDescriptions($input_array) {
           $codes[] = ["code" => $item, "description" => "Special Zoning District"];
           break;
         default:
+          // now let's look at the more complicated cases. begin assuming we will not find a match
           $description = 'Not found';
           if (!empty($item)) {
+            // look at the starting character as that can easily determine what will come next
             $starting_char = substr($item, 0, 1);
             if (in_array($starting_char, ['R', 'C', 'M'])) {
               $pattern = null;
               $is_mixed = null;
               switch ($starting_char) {
-                case 'R':
+                case 'R': // if it's residential...
                   $pattern = '/^(R([1-9]|10)-([1-9]|10)|R([1-9]|10)[A-H])$/';
                   break;
-                case 'C':
+                case 'C': // or is it commercial?
                   $pattern = '/^(C[2-7]-([1-9]|10)|C1-([6-9]|10)|C8-[1-4])$/';
                   break;
-                case 'M':
+                case 'M': // or is it one of the Manufacturing or mixed zones?
                   if (strpos($item, 'R') === false) {
                     // not mixed
                     $is_mixed = false;
@@ -67,7 +71,9 @@ function findCodeDescriptions($input_array) {
                   break;
               }
               
+              // now that we've determined which pattern to use for these more complicated patterns, let's test it out
               $match_result = preg_match($pattern, $item);
+              // did we find a match? was it definitely just one match? if so, fill in the description
               if ($match_result !== false && $match_result == 1) {
                 switch ($starting_char) {
                   case 'R':
@@ -88,6 +94,7 @@ function findCodeDescriptions($input_array) {
             }
           }
 
+          // place the description into the array that we'll encode as a JSON later
           $codes[] = ["code" => $item, "description" => $description];
           break;
       }
